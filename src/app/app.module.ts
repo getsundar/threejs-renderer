@@ -24,6 +24,7 @@ import {
 
 @NgModule({
   declarations: [
+    AppComponent,
     RendererComponent
   ],
   imports: [
