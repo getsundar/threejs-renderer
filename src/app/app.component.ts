@@ -8,7 +8,7 @@ import {
   WithProperties
 } from '@angular/elements';
 import {
-  RendererComponentComponent
+  RendererComponent
 } from './rendererComponent/renderer-component/renderer-component.component';
 import {
   DomSanitizer
@@ -22,15 +22,10 @@ import {
 export class AppComponent {
   title = 'threed-renderer';
   content = null;
-  constructor(public injector: Injector, public domSanitizer: DomSanitizer) {
-    const rendererElements = createCustomElement(RendererComponentComponent, {
-      injector
-    });
-    customElements.define('app-renderer-component', rendererElements);
-  }
+  constructor(public injector: Injector, public domSanitizer: DomSanitizer) {}
   ngOnInit(): void {
-    const popupEl: NgElement & WithProperties < RendererComponentComponent > = document.createElement('app-renderer-component') as any;
-    
+    // const popupEl: NgElement & WithProperties < RendererComponent > = document.createElement('app-renderer-component') as any;
+
     // seat
 
     // popupEl.modelPath = '../assets/models/Seat/scene.gltf';
@@ -43,15 +38,13 @@ export class AppComponent {
 
     // aircraft
 
-    popupEl.showAxishelper = false;
-    popupEl.axisHelperSize = 10000;
-    popupEl.cameraPosition = [0, 4000, 45000];
-    popupEl.controlsPosition = [0, 0, 0];
-    popupEl.rendererWidth = 1000;
-    popupEl.rendererHeight = 600;
-    popupEl.modelPath = '../assets/models/A320/scene.gltf';
-
-
-    document.body.appendChild(popupEl);
+    // popupEl.showAxishelper = false;
+    // popupEl.axisHelperSize = 10000;
+    // popupEl.cameraPosition = [0, 4000, 45000];
+    // popupEl.controlsPosition = [0, 0, 0];
+    // popupEl.rendererWidth = 1000;
+    // popupEl.rendererHeight = 600;
+    // popupEl.modelPath = '../assets/models/A320/scene.gltf';
+    // document.body.appendChild(popupEl);
   }
 }

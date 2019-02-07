@@ -15,7 +15,7 @@ import GLTFLoader from 'three-gltf-loader';
   templateUrl: './renderer-component.component.html',
   styleUrls: ['./renderer-component.component.css']
 })
-export class RendererComponentComponent implements OnInit {
+export class RendererComponent implements OnInit {
   @ViewChild('rendererContainer') rendererContainer: ElementRef;
   @ViewChild('wireframeButton') wireframeButton: ElementRef;
   @Input() modelPath: any;
@@ -23,7 +23,7 @@ export class RendererComponentComponent implements OnInit {
   @Input() rendererWidth: any;
   @Input() cameraPosition: any;
   @Input() controlsPosition: any;
-  @Input() showAxishelper: boolean;
+  @Input() showAxishelper;
   @Input() axisHelperSize: any;
   renderer = new THREE.WebGLRenderer();
   scene;
@@ -49,6 +49,13 @@ export class RendererComponentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showAxishelper = JSON.parse(this.showAxishelper);
+    this.cameraPosition = JSON.parse(this.cameraPosition);
+    this.rendererHeight = JSON.parse(this.rendererHeight);
+    this.rendererWidth = JSON.parse(this.rendererWidth);
+    this.controlsPosition = JSON.parse(this.controlsPosition);
+    this.axisHelperSize = JSON.parse(this.axisHelperSize);
+    debugger;
     this.loadModel();
     this.addListeners();
     this.addAxisHelper();
@@ -79,9 +86,10 @@ export class RendererComponentComponent implements OnInit {
   loadModel() {
     const loader = new GLTFLoader();
     loader.load(this.modelPath, (gltf) => {
+      debugger;
       this.scene.add(gltf.scene);
       this.modelLoaded = gltf.scene;
-    }, undefined, function (e) {
+    }, undefined, (e) => {
       console.error(e);
     });
   }

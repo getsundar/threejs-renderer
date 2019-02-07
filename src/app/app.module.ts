@@ -2,7 +2,8 @@ import {
   BrowserModule
 } from '@angular/platform-browser';
 import {
-  NgModule
+  NgModule,
+  Injector
 } from '@angular/core';
 
 import {
@@ -12,20 +13,42 @@ import {
   AppComponent
 } from './app.component';
 import {
-  RendererComponentComponent
+  RendererComponent
 } from './rendererComponent/renderer-component/renderer-component.component';
+import {
+  createCustomElement
+} from '@angular/elements';
+import {
+  APP_BASE_HREF
+} from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RendererComponentComponent
+    RendererComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [RendererComponentComponent]
+  providers: [{
+    provide: APP_BASE_HREF,
+    useValue: '/'
+  }],
+  entryComponents: [RendererComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private injector: Injector) {
+
+  }
+  ngDoBootstrap() {
+    const elements: any[] = [
+      [RendererComponent, 'threed-renderer']
+    ];
+    for (const [component, name] of elements) {
+      const el = createCustomElement(component, {
+        injector: this.injector
+      });
+      customElements.define(name, el);
+    }
+  }
+}
