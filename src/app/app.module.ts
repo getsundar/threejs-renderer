@@ -21,6 +21,27 @@ import {
 import {
   APP_BASE_HREF
 } from '@angular/common';
+import {
+  DragDropModule
+} from '@angular/cdk/drag-drop';
+import {
+  MatExpansionModule
+} from '@angular/material/expansion';
+import {
+  MatFormFieldModule
+} from '@angular/material/form-field';
+import {
+  BrowserAnimationsModule
+} from '@angular/platform-browser/animations';
+import {
+  MatSliderModule
+} from '@angular/material/slider';
+import {
+  MatInputModule
+} from '@angular/material';
+import {
+  MatSlideToggleModule
+} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -29,7 +50,14 @@ import {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    DragDropModule,
+    AppRoutingModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSliderModule,
+    MatSlideToggleModule
   ],
   providers: [{
     provide: APP_BASE_HREF,

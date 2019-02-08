@@ -25,6 +25,7 @@ export class RendererComponent implements OnInit {
   @Input() controlsPosition: any;
   @Input() showAxishelper;
   @Input() axisHelperSize: any;
+  panelOpenState = false;
   renderer = new THREE.WebGLRenderer();
   scene;
   camera;
@@ -55,7 +56,6 @@ export class RendererComponent implements OnInit {
     this.rendererWidth = JSON.parse(this.rendererWidth);
     this.controlsPosition = JSON.parse(this.controlsPosition);
     this.axisHelperSize = JSON.parse(this.axisHelperSize);
-    debugger;
     this.loadModel();
     this.addListeners();
     this.addAxisHelper();

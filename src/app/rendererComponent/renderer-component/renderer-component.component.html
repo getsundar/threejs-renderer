@@ -1,1 +1,39 @@
-<div #rendererContainer></div>
+<div #rendererContainer>
+  <div class="example-box" cdkDrag>
+    <div>
+      <mat-accordion >
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Camera Positions
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <div>X<mat-slider style="margin-left:10px"></mat-slider>
+            </div>
+            <div>Y<mat-slider style="margin-left:10px"></mat-slider>
+            </div>
+            <div>Z<mat-slider style="margin-left:10px"></mat-slider>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Controls Positions
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <div>X<mat-slider style="margin-left:10px"></mat-slider>
+            </div>
+            <div>Y<mat-slider style="margin-left:10px"></mat-slider>
+            </div>
+            <div>Z<mat-slider style="margin-left:10px"></mat-slider>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-slide-toggle style="margin-top:10px;">Show Axis Helper</mat-slide-toggle>
+    </div>
+  </div>
+</div>
