@@ -1,7 +1,7 @@
 <div #rendererContainer>
   <div class="example-box" cdkDrag>
     <div>
-      <mat-accordion >
+      <mat-accordion>
         <mat-expansion-panel [expanded]="true">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -9,12 +9,20 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div>
-            <div>X<mat-slider style="margin-left:10px"></mat-slider>
-            </div>
-            <div>Y<mat-slider style="margin-left:10px"></mat-slider>
-            </div>
-            <div>Z<mat-slider style="margin-left:10px"></mat-slider>
-            </div>
+            <form class="example-form">
+              <mat-form-field>
+                <input matInput placeholder="X Co-ordinates" [(ngModel)]="currentCameraX" type="number"
+                  value="{{currentCameraX}}" (ngModelChange)="changeCamera()" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Y Co-ordinates" [(ngModel)]="currentCameraY" type="number"
+                  value="{{currentCameraY}}" (ngModelChange)="changeCamera()" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Z Co-ordinates" [(ngModel)]="currentCameraZ" type="number"
+                  value="{{currentCameraZ}}" (ngModelChange)="changeCamera()" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </form>
           </div>
         </mat-expansion-panel>
         <mat-expansion-panel>

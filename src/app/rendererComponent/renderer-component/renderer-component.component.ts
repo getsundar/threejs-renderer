@@ -5,6 +5,7 @@ import {
   Input,
   OnInit
 } from '@angular/core';
+
 import * as THREE from 'three';
 declare var require: any;
 import OrbitControls from 'three-orbitcontrols';
@@ -36,6 +37,9 @@ export class RendererComponent implements OnInit {
   mouse;
   sprite;
   modelLoaded;
+  currentCameraX;
+  currentCameraY;
+  currentCameraZ;
   constructor() {
     this.raycaster = new THREE.Raycaster();
     this.mouse = new THREE.Vector2();
@@ -64,10 +68,17 @@ export class RendererComponent implements OnInit {
     this.setControls();
     this.animate();
   }
+  changeCamera() {
+    this.camera.position.set(this.currentCameraX, this.currentCameraY, this.currentCameraZ);
+    this.controls.update();
+  }
   setCamera() {
     this.camera = new THREE.PerspectiveCamera(60, this.rendererContainer.nativeElement.firstChild.clientWidth /
-      this.rendererContainer.nativeElement.firstChild.clientHeight, 1, 80000);
+      this.rendererContainer.nativeElement.firstChild.clientHeight, 1, 800);
     this.camera.position.set(this.cameraPosition[0], this.cameraPosition[1], this.cameraPosition[2]);
+    this.currentCameraX = this.cameraPosition[0];
+    this.currentCameraY = this.cameraPosition[1];
+    this.currentCameraZ = this.cameraPosition[2];
   }
   setControls() {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
@@ -86,7 +97,6 @@ export class RendererComponent implements OnInit {
   loadModel() {
     const loader = new GLTFLoader();
     loader.load(this.modelPath, (gltf) => {
-      debugger;
       this.scene.add(gltf.scene);
       this.modelLoaded = gltf.scene;
     }, undefined, (e) => {

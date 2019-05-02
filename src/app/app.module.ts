@@ -42,6 +42,9 @@ import {
 import {
   MatSlideToggleModule
 } from '@angular/material/slide-toggle';
+import {
+  FormsModule
+} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,7 @@ import {
     MatFormFieldModule,
     BrowserAnimationsModule,
     MatInputModule,
+    FormsModule,
     MatSliderModule,
     MatSlideToggleModule
   ],
@@ -63,7 +67,7 @@ import {
     provide: APP_BASE_HREF,
     useValue: '/'
   }],
-  entryComponents: [RendererComponent]
+  entryComponents: [AppComponent, RendererComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {
