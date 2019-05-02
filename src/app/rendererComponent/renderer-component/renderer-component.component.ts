@@ -112,6 +112,9 @@ export class RendererComponent implements OnInit {
   animate() {
     window.requestAnimationFrame(() => this.animate());
     this.renderer.render(this.scene, this.camera);
+    this.currentCameraX = parseInt(this.camera.position.x);
+    this.currentCameraY = parseInt(this.camera.position.y);
+    this.currentCameraZ = parseInt(this.camera.position.z);
   }
   addAxisHelper() {
     const axesHelper = new THREE.AxesHelper(this.axisHelperSize);
